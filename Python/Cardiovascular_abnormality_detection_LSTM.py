@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 # %%
+#run with: python Cardiovascular_abnormality_detection_LSTM.py Data\CAD_Testing.csv 125 667619 1234 ./
 
 # %%
 import sys
@@ -34,9 +35,9 @@ def get_freq_bins(signal,fs,num_bins,bin_width,verbose=False):
     return bin_array
 
 
-def Run_CAD_LSTM_Model(model_path, csv_path, sampling_frequency,patient_ID, date,result_path):
+def Run_CAD_LSTM_Model(csv_path, sampling_frequency,patient_ID, date,result_path):
     
-    model = tf.keras.models.load_model(model_path)
+    model = tf.keras.models.load_model('CAD_LSTM_11_7.h5')
     
     raw_ecg =  pd.read_csv(csv_path)
     
@@ -67,9 +68,9 @@ def Run_CAD_LSTM_Model(model_path, csv_path, sampling_frequency,patient_ID, date
 
 if __name__ == '__main__':
     
-    if(len(sys.argv) != 7):
+    if(len(sys.argv) != 6):
         print("Wrong number of arguments. Should be\nmodel_path, csv_path, sampling_frequency,patient_ID, date")
-    Run_CAD_LSTM_Model(sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5],sys.argv[6])
+    Run_CAD_LSTM_Model(sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5])
     
 
 
