@@ -6193,17 +6193,7 @@ textarea.form-control-lg {
   color: #000;
 }
 
-@-webkit-keyframes spinner-border {
-  to {
-    transform: rotate(360deg) /* rtl:ignore */;
-  }
-}
 
-@keyframes spinner-border {
-  to {
-    transform: rotate(360deg) /* rtl:ignore */;
-  }
-}
 .spinner-border {
   display: inline-block;
   width: 2rem;

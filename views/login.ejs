@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./header.ejs') %>
+
+    <body>
+        <!-- Responsive navbar-->
+        <%- include('./preNavbar.ejs') %>
+
+            <body>
+                <div class="container-fluid">
+                    <div class="container p-5 mt-5">
+                        <div class="card p-2 static" style="border-radius: 20px; background-color: rgb(176, 243, 131);">
+                            <div class=" mt-5 ml-5">
+                                <div class=" ml-2 mb-5">
+                                    <h2 style="color: rgba(1, 36, 1, 0.884);"><Strong>Log In</Strong></h2>
+                                </div>
+                            </div>
+                            <form method="post">
+                                <div class="ml-5">
+                                    <label class="ml-2 mr-5"><strong>Username:</strong></label>
+                                    <input type="text " class="mb-5 pr-3 mr-5 p-3"
+                                        style="border-radius: 10px; width:700px" id="username" name="username"
+                                        required /><br>
+
+                                    <label class="ml-1 mr-5"><strong>Password:</strong></label>
+                                    <input class=" mr-2 p-3 ml-2" style="border-radius: 10px; width:700px" type="password"
+                                        id="password" name="password" required>
+                                        <br>
+
+                                    <div class="d-flex justify-content-center mt-5">
+
+                                        <button type="submit" class="btn btn-primary  btn-lg" id="sub">
+                                            Log in
+                                        </button>
+
+                                    </div>
+                                </div>
+
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div>
+            </body>
+
+            <!-- Bootstrap core JS-->
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                crossorigin="anonymous"></script>
+
+    </body>
+
+</html>
