@@ -35,6 +35,14 @@ const patientSchema = new Schema({
     date: {
         type: String,
         required: false
+    },
+    updated_at: {
+        type: String,
+        required: false
+    },
+    sampling_frequency: {
+        type: Number,
+        required: true
     }
 });
 

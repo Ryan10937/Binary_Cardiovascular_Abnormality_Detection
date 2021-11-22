@@ -52,7 +52,7 @@
                         <h2 style="color: rgba(1, 36, 1, 0.884);"><Strong>Patient's Details</Strong></h2>
                     </div>
                 </div>
-                <form method="post">
+                <form  action="/upload" method="POST"  enctype="multipart/form-data" data-toggle="validator">
                     <div class="ml-5">
 
 
@@ -83,13 +83,16 @@
                         </select>
                         
                         <label class="ml-5 mr-2"><strong>CSV File:</strong></label>
-                        <input type="file" class="mb-5 p-3 ml-4" style="border-radius: 10px;" id="inputFile"
-                            name="inputFile" required /><br>
+                        <input type="file" class="mb-5 p-3 ml-4" style="border-radius: 10px;" id="file" 
+                            name="file" required /><br>
                         
                         <label class="ml-2 mr-5"><strong>Date: &nbsp;&nbsp;&nbsp;&nbsp;</strong></label>
                         <input type="date" class="mb-5 p-3  mr-5" id="date" name="date"
                             style="border-radius: 10px; width: 240px;">
                             <div id="spinner" class="loading btn ml-2 mr-2" ></div>
+                        <label class="ml-2 mr-2"><strong>Sampling Frequerncy:</strong></label>
+                        <input type="number" class="mb-5 p-3" id="sampling_frequency" name="sampling_frequency" style="border-radius: 10px;"
+                                required /> <br>
                         <div class="d-flex justify-content-center">
                             
                             <button type="submit" class="btn btn-primary  btn-lg" id="sub"
