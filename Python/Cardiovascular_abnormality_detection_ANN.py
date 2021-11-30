@@ -8,61 +8,61 @@ import sys
 import pandas as pd
 import numpy as np
 import tensorflow as tf
+import matplotlib.pyplot as plt
 def get_freq_bins(signal,fs,num_bins,bin_width,verbose=False):
 #function that returns num_bins number of bins with width bin_width 
-    size = np.shape(signal)[1]
-    print("size:",size)
-    ts = 1/fs
-    amplidtude = np.fft.fft(signal,size)/size
-    df=fs/size; #frequency resolution
-    f=[i*df for i in range(0,int(size/2))]
-    if verbose:
-        plt.figure(1)
-        plt.subplot(2,1,1)
-        plt.stem(f,abs(frequencyArr[0:int(size/2)]))
-        plt.subplot(2,1,2)
-        plt.plot(signal)
-
-    bin_array = np.array(0,dtype = float)
+    direction = 1
     
-    for i in range(0,num_bins*bin_width,bin_width):
-        #first index of bin array is the amplitudes from fq 1 to 5. second is 5 to 10 and so on
-        bin_array = np.append(bin_array, np.sum(abs(amplidtude[i:i+bin_width+1])))
-    bin_array = np.delete(bin_array,0)
-    #Make graphs of time series and frequency and save those images as .png
-    #Make parameter to pass patient ID save as patient_ID_FFT.png patient_ID_TIMESERIES.png
-    #add validation dataset
-    return bin_array
+    #normalize signal
+    signal_range = signal.max(axis=direction) - signal.min(axis=direction)
+    #print('signal_range: ',signal_range)
+    signal_min = signal.min(axis=direction)
+    #print('signal_min: ',signal_min)
+    signal = (signal - signal_min)/signal_range
+    
+    
+    size = max(np.shape(signal))
+    half_size = int(size/2)
+    ts = 1/fs
+    amplitude = np.fft.fft(signal,size)/size
+    df=fs/size; #frequency resolution
+    f=[i*df for i in range(0,half_size)]
+    amplitude = abs(amplitude[0:half_size])
+    return amplitude[0][0:num_bins]
 
 
-def Run_CAD_ANN_Model(csv_path, sampling_frequency,patient_ID, date,result_path):
+def Run_CAD_ANN_Model(csv_path, sampling_frequency, patient_ID, date, result_path):
     
     model = tf.keras.models.load_model('CAD_ANN_11_15.h5')
     
-    raw_ecg =  pd.read_csv(csv_path)
+    raw_ecg =  pd.read_csv(csv_path,header=None)
     
-    bins=76
+    bins = 76
     width = 1
-    raw_ecg = raw_ecg.to_numpy()
+    raw_ecg = raw_ecg.to_numpy(copy=True)
     fft_arr = get_freq_bins(raw_ecg,int(sampling_frequency),bins,width)
     
-    print(np.shape(fft_arr))
-    print(type(fft_arr))
+    #print(np.shape(fft_arr))
+    #print(type(fft_arr))
     
     result = model.predict(fft_arr.reshape(1,bins))
-
-    f = open(result_path + patient_ID+ '_' + date + "_results.txt", "w")
+    png_path = ''
 
     if result[0][0] > result[0][1]:
         #print to result file
-        print('patient normal')
-        f.write('patient normal')
-    else:
-        print('patient abnormal')
-        f.write('patient abnormal')
+        png_path = result_path + patient_ID+ '_' + date + '_' + 'normal' + "_results.png"
         
-    print(result)
-    
+    else:
+        png_path = result_path + patient_ID+ '_' + date + '_' + 'abnormal' +"_results.png"
+
+    #put all code in Python folder
+    #copy all main files into python folder 
+
+    plt.stem(fft_arr)
+    plt.xlabel('Frequency (Hz)')
+    plt.ylabel('Amplitude')
+    plt.title(str(patient_ID) + ' Input Features')
+    plt.savefig(png_path)
 
 if __name__ == '__main__':
     
@@ -71,3 +71,5 @@ if __name__ == '__main__':
     Run_CAD_ANN_Model(sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5])
 
 
+
+# %%
