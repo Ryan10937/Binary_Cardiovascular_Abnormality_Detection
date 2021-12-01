@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <%- include('./header.ejs') %>
+    <%- include('./postloginNavbar.ejs') %>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <body>
+        <div class="container-fluid">
+            <label class="mt-5 ml-3" style="font-size: 60px;">Patients</label>
+            <a class="btn ml-3 mt-5 mr-3" style="size: 30px; float: right;" href="/upload"><img src="https://img.icons8.com/ios-filled/75/000000/add-user-male.png"/></a>
+        </div>
+        <div>
+           
+            <form method="post" action="/getPatient">
+                <label class="ml-4 mt-5 mb-5">
+                    <strong>Find By Name:&nbsp;&nbsp; </strong>
+                </label><input type="text" style="width: 300px;" id = "findName" placeholder="Name of Patient" name="findName"> 
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+            
+        </div>
+        <div class="container-fluid">
+            <% if(patient.length >0) { %>
+                <table class= "table table-striped mt-5">
+                    <tr class="bg-dark" style="color: aliceblue; font-size: larger;"> 
+                        <th scope="col">
+                            Patient Name
+                        </th>
+                        <th scope="col">
+                            Patient Email
+                        </th>
+                        <th scope="col">
+                            Date
+                        </th>
+                        <th scope="col">
+                            Result
+                        </th>
+                        <th scope="col">
+                            Options
+                        </th>
+                    </tr>
+                    <% for (let p of patient) { %>
+                        <tbody>
+                            <tr>
+                                <th scope="row" id= <%= p.patient_id %>>
+                                    <%= p.patient_name %>
+                                </th>
+                                <th scope="row">
+                                    <%= p.patient_email%> 
+                                </th>
+                                <th scope="row">
+                                    <%= p.date %>
+                                </th>
+                                <th scope="row">
+                                    <%= p.result %>
+                                </th>
+                                
+                                <th scope="row">
+                                   
+                                       <button class="btn btn-success btn-sm" style="font-size: 20px;" onclick="detailsFunction(this.id)" id=<%= p.patient_id %>>Details</button> 
+                                    
+                                    
+                                </th>
+                            </tr>
+                        </tbody>
+                    <% } %>
+                </table>
+            <% } else { %>
+                    <h1 class="mt-5 ml-4">No Patient records yet!! </h1>
+            <% } %>
+        </div>
+    </body>
+    <script>
+        function detailsFunction(id){
+
+            
+            
+        }
+    </script>
+</html>

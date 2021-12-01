@@ -6,7 +6,8 @@ const fs = require('fs')
 let exe;
 let inputPath,PATIENT_ID,dateCSV;
 exports.uploadPatientData = async(req,res,next)=>{
-    
+    console.log("DOC_ID", req.session.doc.doc_id);
+    console.log("Doc-Id",req.session.doc_id)
     const patient = new Patient({
         patient_id: uid.v4(),
         patient_name: req.body.name,
@@ -14,7 +15,7 @@ exports.uploadPatientData = async(req,res,next)=>{
         patient_gender: req.body.gender,
         patient_email: req.body.email,
         sampling_frequency : req.body.sampling_frequency,
-        doc_id: "",
+        doc_id: req.session.doc_id,
         result:"",
         updated_at: Date.now().toString(),
         date: req.body.date.toString()
@@ -32,7 +33,7 @@ exports.uploadPatientData = async(req,res,next)=>{
     PATIENT_ID = patient.patient_id;
     console.log("Patient",patient)
     await saveDB(patient);
-    await callPy(inputPath,patient)
+   // await callPy(inputPath,patient)
     
 
     
@@ -45,6 +46,20 @@ exports.viewUplaodPage = (req,res,next)=>{
 }
 
 
+exports.viewDashboard = (req,res,next) =>{
+    Patient.find({doc_id : req.session.doc_id})
+    .then(patient=>{
+        res.render('../views/viewPatients.ejs',{
+            patient: patient,
+            title: 'Patient Image',
+            path:'/viewDashboard'
+        })
+    }).catch(err=>{
+        console.log("Error",err);
+        res.redirect('/')
+    })
+}
+
 async function saveDB(patient){
     patient.save().then(result=>{
         console.log("Patient details Inserted successfuly");
@@ -55,7 +70,7 @@ async function saveDB(patient){
 }
 
 async function callPy(inputPath,patient){
-    const childPython =  spawn('py', [path.join(__dirname, '..', 'Python', 'Cardiovascular_abnormality_detection_ANN.py'),inputPath,patient.date,patient.sampling_frequency,path.join(__dirname,"..","Results")])
+    const childPython =  spawn('py', [path.join(__dirname, '..', 'Python', 'Cardiovascular_abnormality_detection_ANN.py'),inputPath,patient.sampling_frequency,patient.patient_id,patient.date,path.join(__dirname,"..","Results")])
                 childPython.stdout.on('data',(data)=>{
                     console.log("stdout:",data.toString());
                 })
@@ -64,3 +79,5 @@ async function callPy(inputPath,patient){
                     console.log("stderr:",data.toString());
                 })
 }
+
+

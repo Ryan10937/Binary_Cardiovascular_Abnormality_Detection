@@ -46,31 +46,31 @@
 <body>
     <%- include('./postloginNavbar.ejs') %>
         <div class="container p-5 mt-5">
-            <div class="card p-2 static" style="border-radius: 20px; background-color: rgb(176, 243, 131);">
+            <div class="card mt-5 static" style="border-radius: 20px; background-color: rgb(176, 243, 131); width:1300px; height:900px">
                 <div class=" mt-5 ml-5">
                     <div class=" ml-2 mb-5">
-                        <h2 style="color: rgba(1, 36, 1, 0.884);"><Strong>Patient's Details</Strong></h2>
+                        <h2 style="color: rgba(1, 36, 1, 0.884);"><h1>Patient's Details</h1></h2>
                     </div>
                 </div>
                 <form  action="/upload" method="POST"  enctype="multipart/form-data" data-toggle="validator">
                     <div class="ml-5">
 
 
-                        <label class="ml-2 mr-2"><strong>Patinet's Name:</strong></label>
-                        <input type="text " class="mb-5 pr-3 mr-5 p-3" style="border-radius: 10px;" id="name"
+                        <label class="ml-2 mr-2"><h3>Patinet's Name:</h3></label>
+                        <input type="text " class="mb-5 pr-3 mr-5 p-3" style="border-radius: 10px; width:350px" id="name"
                             name="name" required />
-                        <label class="ml-2 mr-2"><strong>Patient's Age:</strong></label>
-                        <input type="number" class="mb-5 p-3 ml-4" style="border-radius: 10px;" id="age" name="age"
+                        <label class="ml-2 mr-2"><h3>Patient's Age:</h3></label>
+                        <input type="number" class="mb-5 p-3 ml-4" style="border-radius: 10px; width:350px" id="age" name="age"
                             required /> <br>
-                        <label class="ml-2 mr-2"><strong>Patient's Email:</strong></label>
-                        <input type="email" class="mb-5 mr-5 p-3" id="email" name="email" style="border-radius: 10px;"
+                        <label class="ml-2 mr-2"><h3>Patient's Email:</h3></label>
+                        <input type="email" class="mb-5 mr-5 p-3" id="email" name="email" style="border-radius: 10px; width:350px"
                             required />
-                        <label class="ml-2 mr-2"><strong>Patient's Contact:</strong></label>
-                        <input type="text" class="mb-5 p-3" id="contact" name="contact" style="border-radius: 10px;"
+                        <label class="ml-2 mr-2 mt-5"><h3>Patient's Contact:</h3></label>
+                        <input type="text" class="mb-5 p-3" id="contact" name="contact" style="border-radius: 10px;width:350px" 
                             required /> <br>
-                        <label class="ml-2 mr-5"><strong>Gender: </strong></label>
+                        <label class="ml-2 mr-5 mt-5"><h3>Gender: </h3></label>
                         <select name="gender" id="gender" class=" mb-5 p-3 ml-2 mr-2"
-                            style="border-radius: 10px; width: 230px;" required>
+                            style="border-radius: 10px; width: 350px;" required>
                             <option value="Male">
                                 Male
                             </option>
@@ -82,20 +82,20 @@
                             </option>
                         </select>
                         
-                        <label class="ml-5 mr-2"><strong>CSV File:</strong></label>
-                        <input type="file" class="mb-5 p-3 ml-4" style="border-radius: 10px;" id="file" 
+                        <label class=" mr-2" style="margin-left:90px"><h3>CSV File:</h3></label>
+                        <input type="file" class="mb-5 p-3 ml-4" style="border-radius: 10px; width:350px" id="file" 
                             name="file" required /><br>
                         
-                        <label class="ml-2 mr-5"><strong>Date: &nbsp;&nbsp;&nbsp;&nbsp;</strong></label>
+                        <label class="ml-2 mr-5 mt-5"><h3>Date: &nbsp;&nbsp;&nbsp;&nbsp;</h3></label>
                         <input type="date" class="mb-5 p-3  mr-5" id="date" name="date"
-                            style="border-radius: 10px; width: 240px;">
+                            style="border-radius: 10px; width: 350px;">
                             <div id="spinner" class="loading btn ml-2 mr-2" ></div>
-                        <label class="ml-2 mr-2"><strong>Sampling Frequerncy:</strong></label>
-                        <input type="number" class="mb-5 p-3" id="sampling_frequency" name="sampling_frequency" style="border-radius: 10px;"
+                        <label class="ml-2 mr-2"><h3>Sampling Frequerncy:</h3></label>
+                        <input type="number" class="mb-5 p-3" id="sampling_frequency" name="sampling_frequency" style="border-radius: 10px;width:350px"
                                 required /> <br>
                         <div class="d-flex justify-content-center">
                             
-                            <button type="submit" class="btn btn-primary  btn-lg" id="sub"
+                            <button type="submit" class="btn btn-primary  btn-lg mt-5" id="sub" style="font-size: 30px;"
                                 onclick='this.form.submit();spinning(); this.disabled= true; this.hidden = true'>
                                 Upload Data
                             </button>

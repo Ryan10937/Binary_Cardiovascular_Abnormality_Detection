@@ -2,32 +2,29 @@
 <html>
 <%- include('./header.ejs') %>
     <%- include('./preNavbar.ejs') %>
-
         <body>
             <div class="container p-5 mt-5">
-                <div class="card p-2 static" style="border-radius: 20px; background-color: rgb(176, 243, 131);">
+                <div class="card p-2 static" style="border-radius: 20px; background-color: rgb(176, 243, 131); width:1200px">
                     <div class=" mt-5 ml-5">
                         <div class=" ml-2 mb-5">
-                            <h2 style="color: rgba(1, 36, 1, 0.884);"><Strong>Sign Up</Strong></h2>
+                            <h1 style="color: rgba(1, 36, 1, 0.884); font-size: 60px;">Sign Up</h1>
                         </div>
                     </div>
-                    <form method="post" oninput='password.setCustomValidity(confirm_password.value != password.value ? "Passwords do not match." : "")'>
-                        <div class="ml-5">
-                            <label class="ml-2 mr-4"><strong>Name:</strong></label>
-                            <input type="text " class="mb-5 pr-3 mr-5 p-3" style="border-radius: 10px; width:300px" id="name"
+                    <form method="POST" action="/signup">
+                        <div class="ml-5 mt-5">
+                            <label class="ml-2 mr-4"><h3>Name:</h3></label>
+                            <input type="text " class="mb-5 pr-3 mr-5 p-3" style="border-radius: 10px; width:350px" id="name"
                                 name="name" required />
-                            <label class="ml-5 mr-5"><strong>Email:</strong></label>
+                            <label class="ml-3 mr-5"><h3>Email:</h3></label>
                             <input type="email" class="mb-5 mr-5 p-3 " id="email" name="email"
-                                style="border-radius: 10px; width:320px" required /><br>
-                            <label class="ml-2 mr-2"><strong>Contact:</strong></label>
-                            <input type="text" class="mb-5 p-3 ml-2 mr-5" id="contact" name="contact" style="border-radius: 10px;width:300px" 
+                                style="border-radius: 10px; width:350px" required /><br>
+                            <label class="ml-2 mr-2 mt-5"><h3>Contact:</h3></label>
+                            <input type="text" class="mb-5 p-3 ml-2 mr-5" id="contact" name="contact" style="border-radius: 10px;width:340px" 
                                 required /> 
-                                <label class="ml-5 mr-3"><strong>Speciality:</strong></label>
-                            <input type="text" class="mb-5 p-3  mr-5" id="date" name="speciality"
-                                style="border-radius: 10px; width: 320px;"><br>
-                            <label class="ml-2 mr-2"><strong>Gender: </strong></label>
+                                
+                            <label class="ml-2 mr-2 mt-5"><h3>Gender: </h3></label>
                             <select name="gender" id="gender" class=" mb-5 ml-3 p-3 mr-5"
-                                style="border-radius: 10px; width: 300px;" required>
+                                style="border-radius: 10px; width: 350px;" required>
                                 <option value="Male">
                                     Male
                                 </option>
@@ -38,16 +35,16 @@
                                     Other
                                 </option>
                             </select><br>
-                            <label class="ml-1 mr-2"><strong>Password:</strong></label>
-                            <input class=" mr-2 p-3" style="border-radius: 10px; width:300px" type ="password" id="password" name="password" required>
-                            <label class="ml-5 mr-2 mb-5"><strong>Confirm Password:</strong></label>
-                            <input class=" mr-2 p-3" style="border-radius: 10px; width:300px" type ="password" id="confirm_password" name="confirm_password" required>
-                              <br>  <label class="ml-1 mr-2"><strong>Hospital/Clinic Name:</strong></label>
+                            <label class="ml-1 mr-2"><h3>Password:</h3></label>
+                            <input class=" mr-4 p-3" style="border-radius: 10px; width:300px" type ="password" id="password" name="password" required>
+                            <label class="ml-1 mr-2 mt-5 mb-5"><h3>Confirm Password:</h3></label>
+                            <input class="p-3" style="border-radius: 10px; width:300px" type ="password" id="confirm_password" name="confirm_password" required>
+                              <br>  <label class="ml-1 mr-2 mt-5"><h3>Hospital/Clinic Name:</h3></label>
                                 <input type="text" class="mb-5 p-3 ml-4" style="border-radius: 10px; width:700px" id="hospital_name"
                                     name="hospital_name" required /> <br>
                             <div class="d-flex justify-content-center">
 
-                                <button type="submit" class="btn btn-primary  btn-lg" id="sub">
+                                <button type="submit" class="btn btn-primary p-3 btn-lg mb-3">
                                     Sign Up
                                 </button>
 

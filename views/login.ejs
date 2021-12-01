@@ -7,40 +7,50 @@
         <%- include('./preNavbar.ejs') %>
 
             <body>
-                <div class="container-fluid">
-                    <div class="container p-5 mt-5">
-                        <div class="card p-2 static" style="border-radius: 20px; background-color: rgb(176, 243, 131);">
-                            <div class=" mt-5 ml-5">
-                                <div class=" ml-2 mb-5">
-                                    <h2 style="color: rgba(1, 36, 1, 0.884);"><Strong>Log In</Strong></h2>
+                <div class="container-fluid" style="height: 100vh; width: 100%;">
+                    <div class= "row no-gutters" style="height: 100vh;">
+                        <div class="col no-gutters" style="background-color:white; text-align: center;">
+                            <h1 class="" style="color:rgba(1, 36, 1, 0.884); text-align: center; font-size: 80px; margin-top:400px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;">
+                                Welcome to ECG Abnormality Detection!!!<br>
+                                Where we can easily detect an abnormality in the ECG using state-of-the-art AI
+                            </h1>
+                        </div>
+                        <div class="col no-gutters">
+                            <div class="container p-5" style="margin-top: 350px;">
+                                <div class="card p-5 static" style="border-radius: 20px; width: 1000px; background-color:rgb(176, 243, 131); ">
+                                    <div class=" mt-5 ml-5">
+                                        <div class=" ml-2 mb-5">
+                                            <h2 style="color: rgba(1, 36, 1, 0.884);"><h1>Log In</h1></h2>
+                                        </div>
+                                    </div>
+                                    <form method="post" action="/">
+                                        <div class="ml-5">
+                                            <label class="ml-2 mr-1"><h3>Username:</h3></label>
+                                            <input type="text " class="mb-5 pr-3 mr-5 p-3"
+                                                style="border-radius: 10px; width:700px" id="username" name="username"
+                                                required /><br>
+        
+                                            <label class="ml-1 mr-2"><h3>Password:</h3></label>
+                                            <input class=" mr-2 p-3 ml-2" style="border-radius: 10px; width:700px" type="password"
+                                                id="password" name="password" required>
+                                                <br>
+        
+                                            <div class="d-flex justify-content-center mt-5">
+        
+                                                <input type="submit" class="btn btn-primary p-3" style="font-size: 30px; border-radius:20px" value="Login">
+        
+                                            </div>
+                                        </div>
+        
+                                    </form>
+        
+        
                                 </div>
                             </div>
-                            <form method="post">
-                                <div class="ml-5">
-                                    <label class="ml-2 mr-5"><strong>Username:</strong></label>
-                                    <input type="text " class="mb-5 pr-3 mr-5 p-3"
-                                        style="border-radius: 10px; width:700px" id="username" name="username"
-                                        required /><br>
-
-                                    <label class="ml-1 mr-5"><strong>Password:</strong></label>
-                                    <input class=" mr-2 p-3 ml-2" style="border-radius: 10px; width:700px" type="password"
-                                        id="password" name="password" required>
-                                        <br>
-
-                                    <div class="d-flex justify-content-center mt-5">
-
-                                        <button type="submit" class="btn btn-primary  btn-lg" id="sub">
-                                            Log in
-                                        </button>
-
-                                    </div>
-                                </div>
-
-                            </form>
-
-
                         </div>
                     </div>
+
+                    
                 </div>
             </body>
 
