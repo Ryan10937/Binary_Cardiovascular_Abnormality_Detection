@@ -6,7 +6,7 @@ Steps to run :
   2. Open Terminal and execute the below commands
     2.1 npm install
     2.2 npm run
-  3. Once you recieve a message stating that server is running on port 3012 goto http://localhost:3012 to access the website
+  3. Once you recieve a message stating that server is running on port 3012 goto http://localhost:3000 to access the website
   
   
   Note: Please reach us before running for whitelisting your IP Address, we have implemented this for security reasons.
