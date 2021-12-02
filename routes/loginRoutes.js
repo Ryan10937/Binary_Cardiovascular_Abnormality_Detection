@@ -17,4 +17,7 @@ router.get('/',loginController.viewLogin);
 router.post('/',loginController.postLogin);
 
 router.post('/signup',loginController.addDoc)
+
+router.delete('/logout', loginController.postLogout);
+
 module.exports = router;

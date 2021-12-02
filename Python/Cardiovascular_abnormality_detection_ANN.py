@@ -33,7 +33,7 @@ def get_freq_bins(signal,fs,num_bins,bin_width,verbose=False):
 
 def Run_CAD_ANN_Model(csv_path, sampling_frequency, patient_ID, date, result_path):
     
-    model = tf.keras.models.load_model('CAD_ANN_11_15.h5')
+    model = tf.keras.models.load_model('C:/Users/Digital Suppliers/Documents/GitHub/Binary_Cardiovascular_Abnormality_Detection/Python/CAD_ANN_11_15.h5')
     
     raw_ecg =  pd.read_csv(csv_path,header=None)
     
@@ -46,14 +46,15 @@ def Run_CAD_ANN_Model(csv_path, sampling_frequency, patient_ID, date, result_pat
     #print(type(fft_arr))
     
     result = model.predict(fft_arr.reshape(1,bins))
+    print(result)
     png_path = ''
 
     if result[0][0] > result[0][1]:
         #print to result file
-        png_path = result_path + patient_ID+ '_' + date + '_' + 'normal' + "_results.png"
+        png_path = result_path + "/" + patient_ID+ '_' + date + '_' + 'normal' + "_results.png"
         
     else:
-        png_path = result_path + patient_ID+ '_' + date + '_' + 'abnormal' +"_results.png"
+        png_path = result_path + "/" + patient_ID+ '_' + date + '_' + 'abnormal' +"_results.png"
 
     #put all code in Python folder
     #copy all main files into python folder 
@@ -65,11 +66,7 @@ def Run_CAD_ANN_Model(csv_path, sampling_frequency, patient_ID, date, result_pat
     plt.savefig(png_path)
 
 if __name__ == '__main__':
-    
-    if(len(sys.argv) != 6):
-        print("Wrong number of arguments. Should be\nmodel_path, csv_path, sampling_frequency,patient_ID, date")
     Run_CAD_ANN_Model(sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5])
-
-
+   #Run_CAD_ANN_Model("C:/Users/Digital Suppliers/Documents/GitHub/Binary_Cardiovascular_Abnormality_Detection/CSV/5ff02a26-d385-430f-a0b6-90ceb56a6668.csv",1000,"5ff02a26-d385-430f-a0b6-90ceb56a6668","01-12-2021","C:/Users/Digital Suppliers/Documents/GitHub/Binary_Cardiovascular_Abnormality_Detection/Results");
 
 # %%

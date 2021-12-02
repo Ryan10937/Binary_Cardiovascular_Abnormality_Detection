@@ -27,18 +27,40 @@ exports.uploadPatientData = async(req,res,next)=>{
         })
      exe = path.extname(f[0]);
     fs.renameSync(path.join(__dirname, '..', 'CSV', 'csv' + exe), path.join(__dirname, '..', 'CSV', patient.patient_id + exe));
-    let pa = path.join(__dirname,'..','CSV',uid + exe);
+    let pa = path.join(__dirname,'..','CSV',patient.patient_id + exe);
     inputPath = pa;
     dateCSV = patient.date;
     PATIENT_ID = patient.patient_id;
     console.log("Patient",patient)
     await saveDB(patient);
-   // await callPy(inputPath,patient)
+    await callPy(inputPath,patient);
+    setTimeout(finish,10000)
+    function finish(){
+            Patient.find({patient_id : patient.patient_id}).then(patient=>{
+                console.log("Patient",patient[0]._doc);
+             let imgname = fs.readdirSync(path.join(__dirname,"..","Results"));
+             let f = imgname.filter(ele=>{
+                return ele.includes(PATIENT_ID)
+                
+                })
+                let s =f[0].split('_');
+                let patient_result = s[2];
+                let date = s[1];
+             res.render('../views/result.ejs', {
+                 viz_path:  f[0],
+                 patient: patient[0]._doc,
+                 result: patient_result,
+                 date: date,
+                 path: '/result',
+             })
+             console.log('Code Executed')
+            }).catch(err=>{
+                console.log("Error in finding patient details",err)
+            })
+        }
+        
+ 
     
-
-    
-    
-   
 }
 
 exports.viewUplaodPage = (req,res,next)=>{
@@ -60,12 +82,29 @@ exports.viewDashboard = (req,res,next) =>{
     })
 }
 
+exports.viewResult = (req,res,next) =>{
+    res.render(path.join(__dirname,"..","views","result.ejs"))
+}
+
+exports.getPatientDetails = (req,res,next)=>{
+    console.log("Id",req.params.patient_id)
+    Patient.find({patient_id : req.params.patient_id})
+    .then(patient=>{
+        res.render('../views/getPatient.ejs',{
+            patient : patient,
+            path: '/getPatient'
+        })
+    }).catch(err=>{
+        console.log("Error",err);
+        res.redirect('/')
+    }) 
+}
 async function saveDB(patient){
     patient.save().then(result=>{
         console.log("Patient details Inserted successfuly");
         
     }).catch(err=>{
-        console.log("error in inserting patinet",err);
+        console.log("error in inserting patient",err);
     })
 }
 

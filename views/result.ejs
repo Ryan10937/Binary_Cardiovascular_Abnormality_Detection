@@ -18,11 +18,11 @@
                         </td>
                         <td>
                           <p class="patient_name">
-                          <strong>Aditya Tatipaka</strong>  
+                          <strong><%=patient.patient_name %></strong>  
                           </p>
                         </td>
                         <td rowspan="4">
-                          <img src="C:\Users\Digital Suppliers\Documents\GitHub\Binary_Cardiovascular_Abnormality_Detection\Results\ecgRes.jpg">
+                          <img src="<%= viz_path %>">
                         </td>
                       </tr>
                       <tr>
@@ -31,7 +31,7 @@
                         </td>
                         <td>
                           <p class="patient_age">
-                            <strong>25</strong> 
+                            <strong><%=patient.patient_age %></strong> 
                           </p>
                         </td>
                       </tr>
@@ -41,7 +41,7 @@
                         </td>
                         <td>
                           <p class="patient_email">
-                            <strong>adityatatipaka@gmail.com</strong> 
+                            <strong><%=patient.patient_email %></strong> 
                           </p>
                         </td>
                       </tr>
@@ -51,8 +51,8 @@
                             <h5>Patient Result:</h5>
                           </td>
                           <td>
-                            <p class="result" style="color:darkgreen;">
-                             <strong>Normal </strong> 
+                            <p class="result">
+                             <strong><%= result %> </strong> 
                             </p>
                           </td>
                         </tr>

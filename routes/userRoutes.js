@@ -26,4 +26,10 @@ router.post('/upload',upload.single('file'),mainController.uploadPatientData);
 router.get('/upload',mainController.viewUplaodPage);
 
 router.get('/viewDashboard',mainController.viewDashboard);
+
+router.get('/viewResult',mainController.viewResult);
+
+router.get('/viewDashboard/:patient_id',mainController.getPatientDetails);
+
+
 module.exports = router;

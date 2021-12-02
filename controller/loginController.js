@@ -68,3 +68,9 @@ exports.addDoc = async (req, res, next) => {
         console.log(err);
     }
 }
+exports.postLogout = (req, res, next) => {
+    req.session.destroy(err => {
+        console.log(err);
+        res.redirect('/');
+    });
+};

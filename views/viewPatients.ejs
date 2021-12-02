@@ -56,10 +56,12 @@
                                 </th>
                                 
                                 <th scope="row">
-                                   
-                                       <button class="btn btn-success btn-sm" style="font-size: 20px;" onclick="detailsFunction(this.id)" id=<%= p.patient_id %>>Details</button> 
+                                   <!-- <form id="getDetailsForm" data-patient_id=<%=p.patient_id %>>
+                                    <button class="btn btn-success btn-sm" style="font-size: 20px;" id="details">Details</button> 
                                     
-                                    
+                                   </form> -->
+                                       
+                                    <a href="/viewDashboard/<%= p.patient_id %>"  class="btn btn-success btn-sm" >Details</a> 
                                 </th>
                             </tr>
                         </tbody>
@@ -70,11 +72,5 @@
             <% } %>
         </div>
     </body>
-    <script>
-        function detailsFunction(id){
 
-            
-            
-        }
-    </script>
 </html>
