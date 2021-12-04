@@ -16,6 +16,10 @@ const patientSchema = new Schema({
         type: String,
         required: true
     },
+    patient_contact : {
+        type: String,
+        required: true
+    },
     patient_gender: {
         type: String,
         required: true
@@ -43,6 +47,10 @@ const patientSchema = new Schema({
     sampling_frequency: {
         type: Number,
         required: true
+    },
+    viz_path:{
+        type: String,
+        required: false
     }
 });
 

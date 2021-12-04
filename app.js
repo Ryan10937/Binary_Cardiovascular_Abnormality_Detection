@@ -7,6 +7,8 @@ const loginRoutes = require('./routes/loginRoutes')
 
 
 const app = express();
+const methodOverride = require('method-override')
+app.use(methodOverride('_method'))
 const session = require('express-session')
 app.use(session({secret:'myECGFinalSession', resave:false,saveUninitialized:false}));
 app.set('view engine','ejs')
@@ -17,8 +19,7 @@ app.use( express.static( "Results" ) );
 app.use(userRoutes);
 app.use(loginRoutes);
 
-const methodOverride = require('method-override')
-app.use(methodOverride('_method'))
+
 mongoose.connect('mongodb+srv://Aditya_Admin:Aravind1996@aicluster.3d2rz.mongodb.net/ECG?retryWrites=true&w=majority').then(result=>{
     app.listen(3000);
     console.log("Connected to Database!!!")

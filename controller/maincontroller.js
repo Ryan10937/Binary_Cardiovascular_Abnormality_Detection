@@ -14,6 +14,7 @@ exports.uploadPatientData = async(req,res,next)=>{
         patient_age: req.body.age,
         patient_gender: req.body.gender,
         patient_email: req.body.email,
+        patient_contact : req.body.contact,
         sampling_frequency : req.body.sampling_frequency,
         doc_id: req.session.doc_id,
         result:"",
@@ -34,9 +35,10 @@ exports.uploadPatientData = async(req,res,next)=>{
     console.log("Patient",patient)
     await saveDB(patient);
     await callPy(inputPath,patient);
-    setTimeout(finish,10000)
+    setTimeout(finish,15000)
     function finish(){
             Patient.find({patient_id : patient.patient_id}).then(patient=>{
+               
                 console.log("Patient",patient[0]._doc);
              let imgname = fs.readdirSync(path.join(__dirname,"..","Results"));
              let f = imgname.filter(ele=>{
@@ -46,14 +48,23 @@ exports.uploadPatientData = async(req,res,next)=>{
                 let s =f[0].split('_');
                 let patient_result = s[2];
                 let date = s[1];
-             res.render('../views/result.ejs', {
-                 viz_path:  f[0],
-                 patient: patient[0]._doc,
-                 result: patient_result,
-                 date: date,
-                 path: '/result',
-             })
-             console.log('Code Executed')
+                let img_path = path.join(__dirname,"..","Results",f[0]);
+                console.log("img_path",img_path)
+               // patient.result = patient_result.toUpperCase();
+                Patient.updateOne({patient_id: PATIENT_ID},{result: patient_result,viz_path:f[0]})
+               .then(r=>{
+                    res.render('../views/result.ejs', {
+                        viz_path:  f[0],
+                        patient: patient[0]._doc,
+                        result:  patient_result.toUpperCase(),
+                        date: date,
+                        path: '/result',
+                    })
+                    console.log('Code Executed')
+                }).catch(err=>{
+                    console.log(err);
+                })
+             
             }).catch(err=>{
                 console.log("Error in finding patient details",err)
             })
@@ -90,8 +101,9 @@ exports.getPatientDetails = (req,res,next)=>{
     console.log("Id",req.params.patient_id)
     Patient.find({patient_id : req.params.patient_id})
     .then(patient=>{
+        console.log("_doc",patient[0]._doc)
         res.render('../views/getPatient.ejs',{
-            patient : patient,
+            patient : patient[0]._doc,
             path: '/getPatient'
         })
     }).catch(err=>{

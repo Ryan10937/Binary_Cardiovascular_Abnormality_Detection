@@ -57,20 +57,20 @@
 
 
                         <label class="ml-2 mr-2"><h3>Patient's Name:</h3></label>
-                        <input type="text " class="mb-5 pr-3 mr-5 p-3" style="border-radius: 10px; width:350px" id="name"
+                        <input type="text " class="mb-5 pr-3 mr-5 p-3" style="border-radius: 10px;font-size: 25px; width:350px" id="name"
                             name="name" required />
                         <label class="ml-2 mr-2"><h3>Patient's Age:</h3></label>
-                        <input type="number" class="mb-5 p-3 ml-4" style="border-radius: 10px; width:350px" id="age" name="age"
+                        <input type="number" class="mb-5 p-3 ml-4" style="border-radius: 10px;font-size: 25px; width:350px" id="age" name="age"
                             required /> <br>
                         <label class="ml-2 mr-2"><h3>Patient's Email:</h3></label>
-                        <input type="email" class="mb-5 mr-5 p-3" id="email" name="email" style="border-radius: 10px; width:350px"
+                        <input type="email" class="mb-5 mr-5 p-3" id="email" name="email" style="border-radius: 10px;font-size: 25px; width:350px"
                             required />
                         <label class="ml-2 mr-2 mt-5"><h3>Patient's Contact:</h3></label>
-                        <input type="text" class="mb-5 p-3" id="contact" name="contact" style="border-radius: 10px;width:350px" 
+                        <input type="text" class="mb-5 p-3" id="contact" name="contact" style="border-radius: 10px;font-size: 25px;width:350px" 
                             required /> <br>
                         <label class="ml-2 mr-5 mt-5"><h3>Gender: </h3></label>
                         <select name="gender" id="gender" class=" mb-5 p-3 ml-2 mr-2"
-                            style="border-radius: 10px; width: 350px;" required>
+                            style="border-radius: 10px;font-size: 25px; width: 350px;" required>
                             <option value="Male">
                                 Male
                             </option>
@@ -83,15 +83,15 @@
                         </select>
                         
                         <label class=" mr-2" style="margin-left:90px"><h3>CSV File:</h3></label>
-                        <input type="file" class="mb-5 p-3 ml-4" style="border-radius: 10px; width:350px" id="file" 
+                        <input type="file" class="mb-5 p-3 ml-4" style="border-radius: 10px;font-size: 25px; width:350px" id="file" 
                             name="file" required /><br>
                         
                         <label class="ml-2 mr-5 mt-5"><h3>Date: &nbsp;&nbsp;&nbsp;&nbsp;</h3></label>
                         <input type="date" class="mb-5 p-3  mr-5" id="date" name="date"
-                            style="border-radius: 10px; width: 350px;">
-                            <div id="spinner" class="loading btn ml-2 mr-2" ></div>
+                            style="border-radius: 10px;font-size: 25px; width: 350px;">
+                            
                         <label class="ml-2 mr-2"><h3>Sampling Frequerncy:</h3></label>
-                        <input type="number" class="mb-5 p-3" id="sampling_frequency" name="sampling_frequency" style="border-radius: 10px;width:350px"
+                        <input type="number" class="mb-5 p-3" id="sampling_frequency" name="sampling_frequency" style="border-radius: 10px;font-size: 25px;width:350px"
                                 required /> <br>
                         <div class="d-flex justify-content-center">
                             
@@ -99,8 +99,12 @@
                                 onclick='this.form.submit();spinning(); this.disabled= true; this.hidden = true'>
                                 Upload Data
                             </button>
-
+                            
                         </div>
+                        <div class="row d-flex justify-content-center">
+                            <div id="spinner" class="loading btn ml-2 mr-2" ></div>
+                        </div>
+                        
 
 
                     </div>

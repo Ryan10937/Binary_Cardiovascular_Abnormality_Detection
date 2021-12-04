@@ -4,6 +4,119 @@
     <%- include('./postloginNavbar.ejs') %>
 
     <body>
-        <h1>Patinet Name:</h1> 
+        <h1 class="ml-5 mt-5">Patient Details</h1>
+        <div class="container-fluid p-5" style="margin-top: 150px; margin-left: 150px; width:2600px; border-radius: 20px; background-color: rgb(176, 243, 131);">
+            <table class="table table-borderless ml-5">
+                <tr>
+                  <td>
+                    <h2><strong>Patient Name:</strong></h2>
+                  </td>
+                  <td>
+                    <p class="patient_name">
+                    <h2><%=patient.patient_name %></h2>  
+                    </p>
+                  </td>
+                  <td rowspan="8">
+                    <img style="width:80%; height: 80%" src="../<%= patient.viz_path %>">
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <h2><strong>Patient Age:</strong></h2>
+                  </td>
+                  <td>
+                    <p class="patient_age">
+                      <h2><%=patient.patient_age %></h2> 
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <h2><strong>Patient Email:</strong></h2>
+                  </td>
+                  <td>
+                    <p class="patient_email">
+                      <h2><%=patient.patient_email %></h2> 
+                    </p>
+                  </td>
+                </tr>
+                
+                  <tr>
+                    <td>
+                      <h2><strong>Patient Result:</strong></h2>
+                    </td>
+                    <td>
+                      <p class="result">
+                       <h2><%= patient.result %> </h2> 
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                      <td>
+                        <h3 ><strong>Patient Gender :</strong> </h3>
+                      </td>
+                      <td>
+                        <h3 ><%= patient.patient_gender %></h3>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>
+                        <h3 ><strong>Patient Contact :</strong> </h3>
+                      </td>
+                      <td>
+                        <h3 ><%= patient.patient_contact %></h3>
+                      </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h3 ><strong>CSV Date :</strong> </h3>
+                    </td>
+                    <td>
+                      <h3 ><%= patient.date %></h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                      <h3 ><strong>Sampling Frequency :</strong> </h3>
+                    </td>
+                    <td>
+                      <h3 ><%= patient.sampling_frequency %></h3>
+                    </td>
+                </tr>
+              </table>
+            <!-- <div class="row mt-4" >
+                <h3 class="col-md-3 pr-0 pl-0"><strong>Patient Age :</strong> </h3>
+                <h3 class="col-md-1 pr-0 pl-0"><%= patient.patient_age %></h3>
+                <img style="margin-left:700px" class="col-md-5" src="../<%= patient.viz_path %>">
+                
+            </div> -->
+            <!-- <div rowspan="4">
+              
+            </div> -->
+            <!-- <div class="row mt-4">
+                <h3 class="col-md-3 pr-0 pl-0"><strong>Patient Gender :</strong> </h3>
+                <h3 class="col-md-1 pr-0 pl-0"><%= patient.patient_gender %></h3>
+            </div> 
+            <div class="row mt-4">
+                <h3 class="col-md-3 pr-0 pl-0"><strong>Patient Email :</strong> </h3>
+                <h3 class="col-md-1 pr-0 pl-0"><%= patient.patient_email %></h3>
+            </div> 
+            <div class="row mt-4">
+                <h3 class="col-md-3 pr-0 pl-0"><strong>Patient Contact :</strong> </h3>
+                <h3 class="col-md-1 pr-0 pl-0"><%= patient.patient_contact %></h3>
+            </div> 
+            <div class="row mt-4">
+                <h3 class="col-md-3 pr-0 pl-0"><strong> CSV Date :</strong> </h3>
+                <h3 class="col-md-1 pr-0 pl-0"><%= patient.date %></h3>
+            </div> 
+            <div class="row mt-4">
+                <h3 class="col-md-3 pr-0 pl-0"><strong> Result :</strong> </h3>
+                <h3 class="col-md-1 pr-0 pl-0"><%= patient.result %></h3>
+            </div>  
+            <div class="row mt-4">
+                <h3 class="col-md-3 pr-0 pl-0"><strong>Sampling Frequency :</strong> </h3>
+                <h3 class="col-md-1 pr-0 pl-0"><%= patient.sampling_frequency %></h3>
+            </div>   -->
+        </div> 
     </body>
 </html>
