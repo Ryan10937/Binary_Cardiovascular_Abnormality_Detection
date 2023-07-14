@@ -16,7 +16,7 @@ app.use( express.static( "Results" ) );
 app.use(userRoutes);
 app.use(loginRoutes);
 
-mongoose.connect('mongodb+srv://Aditya_Admin:Aravind1996@aicluster.3d2rz.mongodb.net/ECG?retryWrites=true&w=majority').then(result=>{
+mongoose.connect('mongodb+srv://@aicluster.3d2rz.mongodb.net/ECG?retryWrites=true&w=majority').then(result=>{
     app.listen(3012);
     console.log("Connected to Database!!!")
     console.log("Server running on port 3012")
